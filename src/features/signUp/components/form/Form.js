@@ -11,6 +11,7 @@ import { Container, Box, Anchor } from './formStyles'
 export default function Form() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
   const [response, fetch] = useApi()
 
   useToast(response)
@@ -18,14 +19,14 @@ export default function Form() {
   function submit(event) {
     event.preventDefault()
 
-    const data = { email, password }
+    const data = { email, password, confirmPassword }
 
     fetch(...request(data))
   }
 
   return (
     <Container onSubmit={submit}>
-      <h1>Login</h1>
+      <h1>Cadastro</h1>
       <Input
         type="email"
         placeholder="Email"
@@ -39,10 +40,16 @@ export default function Form() {
         onChange={setPassword}
         loading={response === 'loading' ? true : false}
       />
+      <InputIcon
+        placeholder="Confirme sua senha"
+        value={confirmPassword}
+        onChange={setConfirmPassword}
+        loading={response === 'loading' ? true : false}
+      />
       <Box>
-        <Anchor to="/signup">Não possuo cadastro</Anchor>
+        <Anchor to="/signup">Já possuo cadastro</Anchor>
         <Button
-          name="ENTRAR"
+          name="CADASTRAR"
           loading={response === 'loading' ? true : false}
           nameLoading={threeDots}
         />

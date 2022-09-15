@@ -1,5 +1,5 @@
 export default function request(data) {
-  const url = '/signin'
+  const url = '/signup'
 
   const method = 'post'
 
@@ -11,15 +11,15 @@ export default function request(data) {
 }
 
 function sucessCase(props) {
-  const { res, global, navigate } = props
+  const { setResponse } = props
 
-  const [data] = res
+  const type = 'success'
 
-  global.token = data.data.token
+  const message = 'Cadastro realizado com sucesso!'
 
-  localStorage.setItem('token', data.data.token)
+  const nav = '/'
 
-  navigate('/home')
+  setResponse({ type, message, nav })
 }
 
 function failCase(props) {
@@ -35,13 +35,14 @@ function failCase(props) {
 
       break
 
-    case 'Unauthorized':
-      message = 'Email ou senha estão incorretos.'
+    case 'Conflict':
+      message = 'Esse email já está cadastrado!\nTente outro email'
 
       break
 
     default:
       message = 'Ocorreu um erro inesperado!\nTente mais tarde'
+      console.log(res)
       break
   }
 
