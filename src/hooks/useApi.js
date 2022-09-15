@@ -1,9 +1,11 @@
 import { useState, useRef } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { useGlobal } from '../context/globalContext'
 import API_URL from '../config/api'
 
 function useApi() {
+  const navigate = useNavigate()
   const { global, setGlobal } = useGlobal()
   const [response, setResponse] = useState(null)
   const loading = useRef(false)
@@ -33,11 +35,11 @@ function useApi() {
 
     Promise.all(promises)
       .then(res => {
-        sucess({ res, setResponse, global, setGlobal, ...props })
+        sucess({ res, setResponse, navigate, global, setGlobal, ...props })
       })
       .catch(res =>
         fail !== null
-          ? fail({ res: res.response, setResponse, ...props })
+          ? fail({ res: res.response, setResponse, navigate, ...props })
           : setResponse(res.response.data)
       )
       .finally(() => {

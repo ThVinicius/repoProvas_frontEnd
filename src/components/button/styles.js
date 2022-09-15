@@ -6,7 +6,7 @@ const Container = styled.button`
   background-color: ${props => props.backgroundColor};
   box-shadow: ${props => props.boxShadow};
   color: ${props => props.color};
-  border: ${props => props.border};
+  border: none;
   border-radius: ${props => props.borderRadius};
   font: ${props => props.font};
   opacity: ${props => props.opacity};

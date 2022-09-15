@@ -7,9 +7,8 @@ const InputBox = styled.div`
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  border: 3px solid #005985;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
   background-color: ${props => props.backGround};
 
   input {
@@ -17,8 +16,8 @@ const InputBox = styled.div`
     height: calc(${props => props.height} - 6px);
     border: none;
     border-radius: 12px;
-    font: normal 400 14px 'Roboto', sans-serif;
-    color: #000000;
+    font: normal 500 16px 'Poppins', sans-serif;
+    color: rgba(0, 0, 0, 0.6);
     padding-left: 14px;
     background-color: ${props => props.backGround};
 

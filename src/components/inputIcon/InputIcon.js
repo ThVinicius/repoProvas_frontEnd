@@ -3,8 +3,8 @@ import { InputBox, Eye, EyeSlash } from './styles'
 
 export default function InputIcon({
   placeholder,
-  width = '66.66%',
-  height = '40px',
+  width = '32.22%',
+  height = '56px',
   loading = false,
   value,
   onChange

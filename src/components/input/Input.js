@@ -1,15 +1,15 @@
 import { Container } from './styles'
 
 export default function Input(props) {
-  const { type = 'text', width = '66.66%', height = '40px' } = props
+  const { type = 'text', width = '32.22%', height = '56px' } = props
   const { loading = false, minLength = '', maxLength = '' } = props
-  const { border = '3px solid #005985', borderRadius = '5px' } = props
-  const { backGround = '#ffffff', color = '#9F9F9F', required = true } = props
-  const { padding = 'none', image = null } = props
+  const { border = '1px solid rgba(0, 0, 0, 0.23)', borderRadius = '4px' } =
+    props
+  const { backGround = '#ffffff', color = 'rgba(0, 0, 0, 0.6)' } = props
+  const { image = null, required = true } = props
   const { reference = null, eventKey = null } = props
   const { backgroundPosition = '98.5% 50%' } = props
   const { placeholder, value, onChange } = props
-  const { boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.15)' } = props
 
   function loadingInput() {
     if (loading === false) return { backGround, disabled: false }
@@ -25,7 +25,6 @@ export default function Input(props) {
       onKeyDown={eventKey}
       height={height}
       width={width}
-      padding={padding}
       backGround={backGroundLoading}
       type={type}
       required={required}
@@ -33,7 +32,6 @@ export default function Input(props) {
       maxLength={maxLength}
       border={border}
       color={color}
-      boxShadow={boxShadow}
       borderRadius={borderRadius}
       disabled={disabled}
       placeholder={placeholder}
