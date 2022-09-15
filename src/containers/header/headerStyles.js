@@ -5,4 +5,5 @@ const Container = styled.div`
   height: 24.41vh;
   background-color: #ffffff;
 `
+
 export { Container }
