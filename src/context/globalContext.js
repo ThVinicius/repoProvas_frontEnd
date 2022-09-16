@@ -3,7 +3,11 @@ import { useState, useContext, createContext } from 'react'
 const GlobalContext = createContext()
 
 export function GlobalProvider({ children }) {
-  const [global, setGlobal] = useState({ token: null, tests: null })
+  const [global, setGlobal] = useState({
+    token: null,
+    testsByDisciplines: null,
+    testsByTeachers: null
+  })
 
   return (
     <GlobalContext.Provider value={{ global, setGlobal }}>

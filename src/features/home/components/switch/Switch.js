@@ -1,3 +1,4 @@
+import { useGlobal } from '../../../../context/globalContext'
 import DisciplineAccordion from '../disciplineAccordion/DisciplineAccordion'
 import TeachersAccordion from '../teachersAccordion/TeachersAccordion'
 
@@ -131,12 +132,14 @@ const teachers = [
 ]
 
 export default function Switch({ selected }) {
+  const { global } = useGlobal()
+
   switch (selected) {
     case 'DISCIPLINAS':
-      return <DisciplineAccordion array={disciplines} />
+      return <DisciplineAccordion array={global.testsByDisciplines} />
 
     case 'PESSOA INSTRUTORA':
-      return <TeachersAccordion array={teachers} />
+      return <TeachersAccordion array={global.testsByTeachers} />
 
     default:
       return null

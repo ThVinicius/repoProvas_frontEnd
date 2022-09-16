@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import useApi from '../../../hooks/useApi'
+import useToast from '../../../hooks/useToast'
+import { request } from '../api/request'
 import App from '../../../containers/app/App'
 import Content from '../../../containers/content/Content'
 import Select from '../components/select/Select'
@@ -6,6 +9,11 @@ import Switch from '../components/switch/Switch'
 
 export default function Home() {
   const [select, setSelect] = useState('DISCIPLINAS')
+  const [response, fetch] = useApi()
+
+  useEffect(() => fetch(...request()), [])
+
+  useToast(response)
 
   return (
     <App>
