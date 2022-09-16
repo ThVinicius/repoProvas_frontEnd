@@ -1,7 +1,7 @@
 import Button from '../button/Button'
 import { Container } from './selectStyles'
 
-const buttons = ['DISCIPLINAS', 'PESSOA INSTRUTURA', 'ADICIONAR']
+const buttons = ['DISCIPLINAS', 'PESSOA INSTRUTORA', 'ADICIONAR']
 
 export default function Select({ select, setSelect }) {
   return (

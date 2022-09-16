@@ -8,8 +8,8 @@ export default function Categories({ arrCategories, msg }) {
         arrCategories.map(({ category, tests }, index) => (
           <Container key={index}>
             <Category>{category}</Category>
-            {tests.map(({ test, pdfUrl, teacher }, index) => (
-              <Test testName={test} info={teacher} key={index} />
+            {tests.map(({ test, pdfUrl, teacher, discipline }, index) => (
+              <Test testName={test} info={teacher || discipline} key={index} />
             ))}
           </Container>
         ))
