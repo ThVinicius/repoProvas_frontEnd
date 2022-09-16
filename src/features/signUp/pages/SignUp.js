@@ -1,10 +1,10 @@
-import Content from '../../../containers/content/Content'
+import App from '../../../containers/app/App'
 import Form from '../components/form/Form'
 
 export default function SignUp() {
   return (
-    <Content>
+    <App>
       <Form />
-    </Content>
+    </App>
   )
 }

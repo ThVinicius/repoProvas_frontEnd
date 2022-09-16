@@ -7,6 +7,7 @@ import {
   IoWifi,
   IoCheckmarkCircleSharp
 } from 'react-icons/io5'
+import { RiArrowDownSLine } from 'react-icons/ri'
 import { IoIosExit } from 'react-icons/io'
 
 const LockClosed = styled(IoLockClosed)`
@@ -51,4 +52,12 @@ const Checkmark = styled(IoCheckmarkCircleSharp)`
   color: #9bfbb0;
 `
 
-export { LockClosed, Exit, IosExit, Pencil, Wallet, Wifi, Checkmark }
+const Arrow = styled(RiArrowDownSLine)`
+  width: 50px;
+  height: 40px;
+  color: #8d8d8d;
+  transform: rotate(${props => (props.hidden ? '180deg' : '0deg')});
+  transition: all 0.35s ease;
+`
+
+export { LockClosed, Exit, IosExit, Pencil, Wallet, Wifi, Checkmark, Arrow }
