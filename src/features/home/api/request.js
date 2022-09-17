@@ -1,11 +1,15 @@
 export function request() {
   const submitToken = true
 
-  const teachers = { url: '/teachers/tests', method: 'get' }
+  const teachers = { url: '/tests/teachers', method: 'get' }
 
-  const terms = { url: '/terms/tests', method: 'get' }
+  const terms = { url: '/tests/disciplines', method: 'get' }
 
-  const requests = [terms, teachers]
+  const teachersDisciplines = { url: '/teachersdisciplines', method: 'get' }
+
+  const categories = { url: '/categories', method: 'get' }
+
+  const requests = [terms, teachers, teachersDisciplines, categories]
 
   return [requests, submitToken, sucessCase, failCase]
 }
@@ -13,11 +17,15 @@ export function request() {
 function sucessCase(props) {
   const { res, global, setGlobal } = props
 
-  const [disciplines, teachers] = res
+  const [disciplines, teachers, teachersDisciplines, categories] = res
 
   global.testsByDisciplines = disciplines.data
 
   global.testsByTeachers = teachers.data
+
+  global.teachersDisciplines = teachersDisciplines.data
+
+  global.categories = categories.data
 
   setGlobal({ ...global })
 }
@@ -25,7 +33,7 @@ function sucessCase(props) {
 function failCase(props) {
   const { res, setResponse } = props
 
-  const type = 'success'
+  const type = 'error'
 
   const nav = '/'
 

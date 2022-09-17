@@ -11,7 +11,7 @@ export default function usePersistence(fetch, props) {
       global.token = token
     }
 
-    if (global.tests === null) {
+    if (global.testsByDisciplines === null) {
       fetch(...props)
     }
   }, [])
