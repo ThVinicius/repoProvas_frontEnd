@@ -27,10 +27,16 @@ const TestName = styled.h5`
   color: #000000;
   display: flex;
   gap: 9px;
+  cursor: pointer;
 
   span {
     color: #878787;
   }
 `
 
-export { Container, Category, TestName, Box, Empty }
+const Anchor = styled.a`
+  color: inherit;
+  text-decoration: none;
+`
+
+export { Container, Category, TestName, Box, Empty, Anchor }

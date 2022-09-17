@@ -1,21 +1,42 @@
 import { useState } from 'react'
+import { useGlobal } from '../../../../context/globalContext'
+import useApi from '../../../../hooks/useApi'
+import { createTest } from '../../api/createTest'
+import useToast from '../../../../hooks/useToast'
+import useSelect from '../../../../hooks/useSelect'
+import useClean from '../../../../hooks/useClean'
 import Input from '../../../../components/input/Input'
 import Button from '../../../../components/button/Button'
 import { Container } from './formStyles'
 
 export default function Form() {
+  const { global } = useGlobal()
   const [name, setName] = useState('')
   const [pdfUrl, setPdfUrl] = useState('')
   const [category, setCategory] = useState('')
   const [discipline, setDiscipline] = useState('')
   const [teacher, setTeacher] = useState('')
+  const { select } = useSelect(global, discipline, setTeacher)
+  const [response, fetch] = useApi()
+
+  useToast(response)
+
+  useClean(
+    [setName, setPdfUrl, setCategory, setDiscipline, setTeacher],
+    response
+  )
 
   function submit(event) {
     event.preventDefault()
 
-    const data = { name }
+    const data = {
+      name,
+      pdfUrl,
+      categoryId: Number(category),
+      teacherDisciplineId: Number(teacher)
+    }
 
-    console.log(data)
+    fetch(...createTest(data))
   }
 
   return (
@@ -41,10 +62,11 @@ export default function Form() {
         <option value="" disabled>
           Categoria
         </option>
-        <option value="1">Maior quantidade de visualizações</option>
-        <option value="2">Menor quantidade de visualizações</option>
-        <option value="3">Url por ordem alfabetiza [a-z]</option>
-        <option value="4">Url por ordem alfabetiza [z-a]</option>
+        {global.categories.map(({ id, name }, index) => (
+          <option value={`${id}`} key={index}>
+            {name}
+          </option>
+        ))}
       </select>
 
       <select
@@ -55,10 +77,13 @@ export default function Form() {
         <option value="" disabled>
           Disciplina
         </option>
-        <option value="1">Maior quantidade de visualizações</option>
-        <option value="2">Menor quantidade de visualizações</option>
-        <option value="3">Url por ordem alfabetiza [a-z]</option>
-        <option value="4">Url por ordem alfabetiza [z-a]</option>
+        {global.teachersDisciplines.map(
+          ({ discipline, disciplineId }, index) => (
+            <option value={`${disciplineId}`} key={index}>
+              {discipline}
+            </option>
+          )
+        )}
       </select>
 
       <select
@@ -69,10 +94,11 @@ export default function Form() {
         <option value="" disabled>
           Pessoa Instrutora
         </option>
-        <option value="1">Maior quantidade de visualizações</option>
-        <option value="2">Menor quantidade de visualizações</option>
-        <option value="3">Url por ordem alfabetiza [a-z]</option>
-        <option value="4">Url por ordem alfabetiza [z-a]</option>
+        {select.map(({ teacherDisciplineId, teacher }, index) => (
+          <option value={`${teacherDisciplineId}`} key={index}>
+            {teacher}
+          </option>
+        ))}
       </select>
       <Button width="100%" name="ENVIAR" />
     </Container>

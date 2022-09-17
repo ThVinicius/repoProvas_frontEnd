@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useGlobal } from '../../../context/globalContext'
 import useApi from '../../../hooks/useApi'
 import useToast from '../../../hooks/useToast'
 import usePersistence from '../../../hooks/usePersistence'
@@ -11,10 +12,13 @@ import Switch from '../components/switch/Switch'
 export default function Home() {
   const [select, setSelect] = useState('DISCIPLINAS')
   const [response, fetch] = useApi()
+  const { global } = useGlobal()
 
   usePersistence(fetch, request())
 
-  useEffect(() => fetch(...request()), [])
+  useEffect(() => {
+    if (global.testsByDisciplines === null) fetch(...request())
+  }, [global])
 
   useToast(response)
 
