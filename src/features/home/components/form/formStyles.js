@@ -17,4 +17,10 @@ const Container = styled.form`
   }
 `
 
-export { Container }
+const FileContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  font: normal 500 16px 'Poppins', sans-serif;
+`
+
+export { Container, FileContainer }

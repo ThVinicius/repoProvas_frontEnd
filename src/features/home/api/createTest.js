@@ -28,13 +28,16 @@ function failCase(props) {
 
   const type = 'error'
 
-  const nav = '/'
+  let nav = '/'
 
   let message
 
   switch (res?.statusText) {
     case 'Bad Request':
-      message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+      if (typeof res.data === 'string') message = res.data
+      else message = res.data.reduce((acc, cur) => `${acc}\n` + cur, '')
+
+      nav = undefined
 
       break
 

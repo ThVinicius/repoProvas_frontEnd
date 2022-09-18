@@ -7,12 +7,13 @@ import useSelect from '../../../../hooks/useSelect'
 import useClean from '../../../../hooks/useClean'
 import Input from '../../../../components/input/Input'
 import Button from '../../../../components/button/Button'
-import { Container } from './formStyles'
+import { Container, FileContainer } from './formStyles'
+import { threeDots } from '../../../../components/spinners/spinners'
 
 export default function Form() {
   const { global } = useGlobal()
   const [name, setName] = useState('')
-  const [pdfUrl, setPdfUrl] = useState('')
+  const [file, setFile] = useState()
   const [category, setCategory] = useState('')
   const [discipline, setDiscipline] = useState('')
   const [teacher, setTeacher] = useState('')
@@ -21,22 +22,22 @@ export default function Form() {
 
   useToast(response)
 
-  useClean(
-    [setName, setPdfUrl, setCategory, setDiscipline, setTeacher],
-    response
-  )
+  useClean([setName, setCategory, setDiscipline, setTeacher], response, setFile)
 
   function submit(event) {
     event.preventDefault()
 
-    const data = {
-      name,
-      pdfUrl,
-      categoryId: Number(category),
-      teacherDisciplineId: Number(teacher)
-    }
+    const formData = new FormData()
 
-    fetch(...createTest(data))
+    formData.append('name', name)
+
+    formData.append('file', file)
+
+    formData.append('categoryId', category)
+
+    formData.append('teacherDisciplineId', teacher)
+
+    fetch(...createTest(formData))
   }
 
   return (
@@ -46,17 +47,23 @@ export default function Form() {
         width="100%"
         value={name}
         onChange={setName}
+        loading={response === 'loading' ? true : false}
       />
-      <Input
-        placeholder="Link da prova"
-        width="100%"
-        value={pdfUrl}
-        onChange={setPdfUrl}
-      />
+
+      <FileContainer>
+        <label htmlFor="arquivo">Escolha a prova em pdf</label>
+        <input
+          type="file"
+          name="arquivo"
+          onChange={e => setFile(e.target.files[0])}
+          disabled={response === 'loading' ? true : false}
+        />
+      </FileContainer>
 
       <select
         value={category}
         onChange={e => setCategory(e.target.value)}
+        disabled={response === 'loading' ? true : false}
         required
       >
         <option value="" disabled>
@@ -73,6 +80,7 @@ export default function Form() {
         value={discipline}
         onChange={e => setDiscipline(e.target.value)}
         required
+        disabled={response === 'loading' ? true : false}
       >
         <option value="" disabled>
           Disciplina
@@ -90,6 +98,7 @@ export default function Form() {
         value={teacher}
         onChange={e => setTeacher(e.target.value)}
         required
+        disabled={response === 'loading' ? true : false}
       >
         <option value="" disabled>
           Pessoa Instrutora
@@ -100,7 +109,12 @@ export default function Form() {
           </option>
         ))}
       </select>
-      <Button width="100%" name="ENVIAR" />
+      <Button
+        width="100%"
+        name="ENVIAR"
+        loading={response === 'loading' ? true : false}
+        nameLoading={threeDots}
+      />
     </Container>
   )
 }
