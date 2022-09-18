@@ -7,4 +7,9 @@ const LoadingBox = styled.div`
   align-items: center;
 `
 
-export { LoadingBox }
+const Empty = styled.h4`
+  font: normal 500 14px 'Poppins', sans-serif;
+  color: #000000;
+`
+
+export { LoadingBox, Empty }
