@@ -55,6 +55,7 @@ export default function Form() {
         <input
           type="file"
           name="arquivo"
+          required
           onChange={e => setFile(e.target.files[0])}
           disabled={response === 'loading' ? true : false}
         />
