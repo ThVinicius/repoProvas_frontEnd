@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# projeto20-repoProvas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project developed using TypeScript for tests management
 
-## Available Scripts
+<p align="center">
+  <img  src="https://desenrolaa.com.br/wp-content/uploads/2017/11/homework.png">
+</p>
+<h1 align="center">
+  RepoProvas
+</h1>
+<div align="center">
 
-In the project directory, you can run:
+  <h3>Built With</h3>
 
-### `npm start`
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" height="30px"/>
+  
+  <!-- Badges source: https://dev.to/envoy_/150-badges-for-github-pnk -->
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Links
 
-### `npm test`
+[Repositorio Back-end](https://github.com/ThVinicius/repoProvas_backEnd)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[Deploy Front-end](http://repo-provas-front-end-lake.vercel.app/)
 
-### `npm run build`
+[Deploy Back-end](https://th-repoprovas.herokuapp.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Rota /home
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Nessa rota é possivel:
 
-### `npm run eject`
+- Visualizar as provas por disciplina
+  - provas agrupadas por tipo de prova;
+  - tipos de provas agrupadas por disciplina;
+  - disciplinas agrupadas por período;
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<h1 align="center" >
+<img alt="gif" src="./readmeAssets/disciplinas.gif">
+</h1>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Visualizar as provas por pessoa instrutora
+  - provas agrupadas por tipo de prova;
+  - tipos de provas agrupadas por pessoa instrutora;
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<h1 align="center" >
+<img alt="gif" src="./readmeAssets/instrutora.gif">
+</h1>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Adicionar novas provas
 
-## Learn More
+<h1 align="center" >
+<img alt="gif" src="./readmeAssets/adicionar.gif">
+</h1>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Variaveis de ambiente
 
-### Code Splitting
+Para rodar esse projeto será necessário criar um arquivo `.env` na pasta raiz do projeto e adicionar as sequintes variaveis:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `REACT_APP_API_URL`
+  - URL da API back-end (sem a barra no final)
+    - Ex: http://localhost:4000
 
-### Analyzing the Bundle Size
+## Rodar localmente
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Clone no projeto
 
-### Making a Progressive Web App
+```bash
+  git clone https://github.com/ThVinicius/repoProvas_frontEnd.git
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Vá para o diretório da pasta
 
-### Advanced Configuration
+```bash
+  cd repoProvas_frontEnd
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Instale as dependencias
 
-### Deployment
+```bash
+  npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Inicie o projeto
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm start
+```
