@@ -60,7 +60,7 @@ Nessa rota é possivel:
 
 ## Variaveis de ambiente
 
-Para rodar esse projeto será necessário criar um arquivo `.env` na pasta raiz do projeto e adicionar as sequintes variaveis:
+Para rodar esse projeto será necessário criar um arquivo `.env` na pasta raiz do projeto e adicionar as seguintes variaveis:
 
 - `REACT_APP_API_URL`
   - URL da API back-end (sem a barra no final)
