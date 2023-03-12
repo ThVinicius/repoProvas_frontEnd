@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalProvider } from './context/globalContext'
+import { TabProvider } from './context/tabContext'
 import ResetCSS from './assets/css/reset'
 import GlobalCSS from './assets/css/global'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -14,12 +15,14 @@ export default function App() {
       <GlobalProvider>
         <ResetCSS />
         <GlobalCSS />
-        <Header />
-        <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-        </Routes>
+        <TabProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/home" element={<Home />} />
+          </Routes>
+        </TabProvider>
       </GlobalProvider>
     </BrowserRouter>
   )
