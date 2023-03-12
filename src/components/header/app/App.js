@@ -6,10 +6,14 @@ import { Exit } from '../../../assets/icons/icons'
 import Input from '../../input/Input'
 import logout from '../../../utils/logout'
 import { Container, Logout, InputBox, Box } from './appStyles'
+import { useTab } from '../../../context/tabContext'
+import useHandleTab from '../../../hooks/useHandleTab'
 
 export default function App() {
   const [search, setSearch] = useState('')
   const { global } = useGlobal()
+  const { tab } = useTab()
+  const { placeholder, disabled } = useHandleTab(tab, setSearch)
   const navigate = useNavigate()
 
   return (
@@ -22,7 +26,8 @@ export default function App() {
       </Box>
       <InputBox>
         <Input
-          placeholder="Pesquise por disciplina"
+          placeholder={placeholder}
+          isDisabled={disabled}
           value={search}
           onChange={setSearch}
         />

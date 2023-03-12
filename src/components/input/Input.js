@@ -9,7 +9,7 @@ export default function Input(props) {
   const { image = null, required = true } = props
   const { reference = null, eventKey = null } = props
   const { backgroundPosition = '98.5% 50%' } = props
-  const { placeholder, value, onChange } = props
+  const { placeholder, value, onChange, isDisabled = false } = props
 
   function loadingInput() {
     if (loading === false) return { backGround, disabled: false }
@@ -33,7 +33,7 @@ export default function Input(props) {
       border={border}
       color={color}
       borderRadius={borderRadius}
-      disabled={disabled}
+      disabled={isDisabled || disabled}
       placeholder={placeholder}
       style={{ backgroundImage: `url(${image})` }}
       backgroundPosition={backgroundPosition}
