@@ -4,8 +4,6 @@ export default function useHandleTab(tab, setSearch) {
   const [placeholder, setPlaceholder] = useState('')
   const [disabled, setDisabled] = useState(false)
 
-  console.log(tab)
-
   useEffect(() => {
     switch (tab) {
       case 'DISCIPLINAS':
