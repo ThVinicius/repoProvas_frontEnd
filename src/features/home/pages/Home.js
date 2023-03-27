@@ -9,7 +9,7 @@ import Content from '../../../containers/content/Content'
 import Select from '../components/select/Select'
 import Switch from '../components/switch/Switch'
 
-export default function Home() {
+export default function Home({ search }) {
   const [select, setSelect] = useState('DISCIPLINAS')
   const [response, fetch] = useApi()
   const { global } = useGlobal()
@@ -26,7 +26,7 @@ export default function Home() {
     <App>
       <Content>
         <Select select={select} setSelect={setSelect} />
-        <Switch selected={select} />
+        <Switch selected={select} search={search} />
       </Content>
     </App>
   )

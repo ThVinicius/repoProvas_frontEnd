@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalProvider } from './context/globalContext'
 import { TabProvider } from './context/tabContext'
@@ -10,17 +11,19 @@ import SignUp from './features/signUp/pages/SignUp'
 import Home from './features/home/pages/Home'
 
 export default function App() {
+  const [search, setSearch] = useState('')
+
   return (
     <BrowserRouter>
       <GlobalProvider>
         <ResetCSS />
         <GlobalCSS />
         <TabProvider>
-          <Header />
+          <Header {...{ search, setSearch }} />
           <Routes>
             <Route path="/" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home {...{ search }} />} />
           </Routes>
         </TabProvider>
       </GlobalProvider>

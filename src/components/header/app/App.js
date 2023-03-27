@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useGlobal } from '../../../context/globalContext'
 import Logo from '../logo/Logo'
@@ -9,11 +8,11 @@ import { Container, Logout, InputBox, Box } from './appStyles'
 import { useTab } from '../../../context/tabContext'
 import useHandleTab from '../../../hooks/useHandleTab'
 
-export default function App() {
-  const [search, setSearch] = useState('')
+export default function App({ search, setSearch }) {
   const { global } = useGlobal()
   const { tab } = useTab()
   const { placeholder, disabled } = useHandleTab(tab, setSearch)
+
   const navigate = useNavigate()
 
   return (
@@ -27,7 +26,9 @@ export default function App() {
       <InputBox>
         <Input
           placeholder={placeholder}
-          isDisabled={disabled}
+          isDisabled={
+            !global.testsByDisciplines || !global.testsByTeachers || disabled
+          }
           value={search}
           onChange={setSearch}
         />

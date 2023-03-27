@@ -4,12 +4,12 @@ import HeaderContainer from '../../containers/header/Header'
 import Auth from './auth/Auth'
 import App from './app/App'
 
-export default function Header() {
+export default function Header({ search, setSearch }) {
   const { isAuth } = usePath()
 
   return (
     <HeaderContainer>
-      {isAuth ? <Auth /> : <App />}
+      {isAuth ? <Auth /> : <App {...{ search, setSearch }} />}
       <Toaster position="top-right" reverseOrder={false} />
     </HeaderContainer>
   )
