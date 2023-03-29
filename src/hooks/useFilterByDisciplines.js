@@ -8,11 +8,19 @@ export default function useFilterByDisciplines(search) {
     const { testsByDisciplines: disciplines } = global
 
     if (search.length > 0) {
-      return disciplines?.filter(({ disciplines }) =>
+      const filterTerms = disciplines?.filter(({ disciplines }) =>
         disciplines.some(({ discipline }) =>
           discipline.toLowerCase().includes(search.toLowerCase())
         )
       )
+
+      return filterTerms.map(({ number, termId, disciplines }) => {
+        const disciplinesFilter = disciplines.filter(({ discipline }) =>
+          discipline.toLowerCase().includes(search.toLowerCase())
+        )
+
+        return { number, termId, disciplines: disciplinesFilter }
+      })
     } else {
       return disciplines
     }
